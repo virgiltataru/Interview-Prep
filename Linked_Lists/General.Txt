@@ -1,0 +1,2 @@
+Tricks: Use 2 pointers with different speeds
+        Use dummy head/tail
