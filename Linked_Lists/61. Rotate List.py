@@ -1,3 +1,4 @@
+#Find the lenght, move two pointers then change the links around them
 class Solution:
     def rotateRight(self, head, k):
         """
