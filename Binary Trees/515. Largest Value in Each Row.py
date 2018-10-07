@@ -7,21 +7,19 @@ class Solution(object):
         """
         if not root:
             return []
-        res = []
-        ln = 0
-        lst = [(root, 0)]
-        while lst:
-            node, level = lst.pop()
-            if not node:
-                return
-            if ln == level:
-                res.append([node.val])
-                ln += 1
-            else:
-                res[level].append(node.val)
-            if node.left:
-                lst.append([node.left, level+1])
-            if node.right:
-                lst.append([node.right, level+1])
 
-        return [max(x) for x in res]
+        ans = []
+        queue = [[root]]
+        
+        while queue:
+            new_level = []
+            level = queue.pop(0)
+            ans.append(max([node.val for node in level]))
+            for node in level:
+                if node.left:
+                    new_level.append(node.left)
+                if node.right:
+                    new_level.append(node.right)
+            if len(new_level):
+                queue.append(new_level)
+        return ans
