@@ -1,0 +1,5 @@
+1) dfs
+2) bfs
+3) topological sort
+4) coloring
+5) F-W and Dijkstra
