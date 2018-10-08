@@ -1,0 +1,10 @@
+1) Divide and conquer: Find number of inversions.
+-similar to merge sort, F(i,j) = F(0, i) + F(i+1,j) + c, where
+c is the number of inversions started in the first part and ended in the second.
+to count them, remember the array is sorted so if a[i] > b[j], all numbers from
+i...n will be bigger than the numbers in b over j
+
+2) IPO problem.
+-when you have to maximize and outcome and are bound by a resource, always
+consider zipping them and sorting by the resource, then get the optimal element
+at every step
