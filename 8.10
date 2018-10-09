@@ -8,3 +8,13 @@ i...n will be bigger than the numbers in b over j
 -when you have to maximize and outcome and are bound by a resource, always
 consider zipping them and sorting by the resource, then get the optimal element
 at every step
+
+3) Minimum in rotated array.
+- array is rotated, not randomly scrambled, so if arr[start] > arr[end] => there
+is a rotation inside, and we do binary search until we find arr[start] as
+minimum.
+
+4)662. Maximum Width of Binary Tree
+- initial idea of doing BFS is good, but needed to think about how to keep track
+of each node's position relative to the others. storing a numbering in the que
+is key
