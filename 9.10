@@ -1,3 +1,6 @@
 1) Falling dominos
 - when you need to evaluate what happens to an array, always think about 2
 pointer solution in one pass or two passes..
+
+2) set intersection size at least two.
+- when dealing with intervals, always consider merging or sorting.
