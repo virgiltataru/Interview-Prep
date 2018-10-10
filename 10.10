@@ -1,0 +1,5 @@
+689. Maximum Sum of 3 Non-Overlapping Subarrays
+https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/discuss/108238/Python-o(n)-time-o(1)-space.-Greedy-solution.
+-do this by hand, there is something here that can be reused
+
+DP: recursive + memo, always think from the back, how to end the problem
