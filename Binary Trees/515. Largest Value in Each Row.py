@@ -9,11 +9,11 @@ class Solution(object):
             return []
 
         ans = []
-        queue = [[root]]
-        
+        queue = collections.deque([root])
+
         while queue:
             new_level = []
-            level = queue.pop(0)
+            level = queue.popleft()
             ans.append(max([node.val for node in level]))
             for node in level:
                 if node.left:
