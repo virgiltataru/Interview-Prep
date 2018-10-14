@@ -6,7 +6,6 @@ class Solution(object):
     :type q: TreeNode
     :rtype: TreeNode
     """
-
         if not root or root in [p,q]:
             return root
 

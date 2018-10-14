@@ -28,7 +28,7 @@ class LFUCache(object):
             return
 
         self.time += 1
-        if not key in self.map:
+        if key not in self.map:
 
             if len(self.map) >= self.capacity:      # must remove least frequent from cache
 
