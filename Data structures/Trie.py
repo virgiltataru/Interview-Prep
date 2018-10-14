@@ -18,7 +18,7 @@ class Trie:
     def search(self, word):
         current = self.root
         for letter in word:
-            current = current.children.get(letter)
+            current = current.children[letter]
             if current is None:
                 return False
         return current.is_word
@@ -26,7 +26,7 @@ class Trie:
     def startsWith(self, prefix):
         current = self.root
         for letter in prefix:
-            current = current.children.get(letter)
+            current = current.children[letter]
             if current is None:
                 return False
         return True

@@ -21,12 +21,12 @@ def top(self):
     if len(self.q) == 0:
         return None
     else:
-        return self.q[len(self.q) - 1][0]
+        return self.q[-1][0]
 
 
 # @return an integer
 def getMin(self):
-    if len(self.q) == 0:
+    if not self.q:
         return None
     else:
-        return self.q[len(self.q) - 1][1]
+        return self.q[-1][1]

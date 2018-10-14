@@ -16,11 +16,6 @@ def lis(arr):
 
     # Initialize maximum to 0 to get the maximum of all
     # LIS
-    maximum = 0
 
-    # Pick maximum of all LIS values
-    for i in range(n):
-        maximum = max(maximum , lis[i])
-
-    return maximum
+    return max(list)
 # end of lis function

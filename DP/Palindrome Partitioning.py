@@ -1,4 +1,4 @@
-#This type of problems are just like Matrix Chain Multiplication, try all stepsself.
+#This type of problems are just like Matrix Chain Multiplication, try all steps
 #here we want the fewest cuts needed to turn a string into a palindrom
 
 #minPalPartion(str, i, j) = Min { minPalPartion(str, i, k) + 1 +
