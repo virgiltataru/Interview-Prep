@@ -18,10 +18,8 @@ def minPalPartion(str):
     # P[i][j] = true if substring str[i..j]
     # is palindrome, else false. Note that
     # C[i][j] is 0 if P[i][j] is true
-    C = [[0 for i in range(n)]
-            for i in range(n)]
-    P = [[False for i in range(n)]
-                for i in range(n)]
+    C = [[0 for i in range(n)] for i in range(n)]
+    P = [[False for i in range(n)] for i in range(n)]
 
     # different looping variables
     j = 0
@@ -63,7 +61,6 @@ def minPalPartion(str):
             if P[i][j] == True:
                 C[i][j] = 0
             else:
-
                 # Make a cut at every possible
                 # location starting from i to j,
                 #and get the minimum cost cut.
