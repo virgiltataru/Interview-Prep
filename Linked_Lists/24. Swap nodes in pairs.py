@@ -1,6 +1,8 @@
-#Here, pre is the previous node. Since the head doesn't have a previous node, I just use self instead. Again, a is the current node and b is the next node.
+#Here, pre is the previous node. Since the head doesn't have a previous node,
+#I just use self instead. Again, a is the current node and b is the next node.
 
-#To go from pre -> a -> b -> b.next to pre -> b -> a -> b.next, we need to change those three references. Instead of thinking about in what order I change them, I just change all three at once.
+#To go from pre -> a -> b -> b.next to pre -> b -> a -> b.next, we need to change those three references.
+#Instead of thinking about in what order I change them, I just change all three at once.
 
 def swapPairs(self, head):
     pre, pre.next = self, head
