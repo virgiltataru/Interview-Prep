@@ -38,7 +38,6 @@ def minPalPartion(str):
     # length starting from 2 to n.
     # The loop structure is same as
     # Matrix Chain Multiplication problem
-    # (See https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/ )
     for L in range(2, n + 1):
 
         # For substring of length L, set
