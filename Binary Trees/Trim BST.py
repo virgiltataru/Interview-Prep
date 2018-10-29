@@ -1,8 +1,6 @@
 #If the val of current node is smaller than L, abandon the left sub-tree and trim its right sub-tree
 #If the val of current node is greater than R, abandon the right sub-tree and trim its left sub-tree
 #Else, recursively trim its left and right sub-tree and return the root
-
-
 class Solution(object):
     def trimBST(self, root, L, R):
         """
