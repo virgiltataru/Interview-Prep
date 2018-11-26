@@ -1,55 +1,52 @@
-import heapq
+from collections import OrderedDict, defaultdict
 
-class LFUCache(object):
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.freq = 1
 
+class LFUCache:
     def __init__(self, capacity):
+        self.d = {}     # key -> val
+        self.freqs = defaultdict(OrderedDict) # freq -> OrderedDict(key -> val)
         self.capacity = capacity
-        self.time = 0
-        self.map = {}               # key to value
-        self.freq_time = {}         # key to (freq, time)
-        self.priority_queue = []    # (freq, time, key), only updated when new key is added
-        self.update = set()         # keys that have been get/put since last new key was added
-
+        self.size = 0
+        self.min_freq = 1
 
     def get(self, key):
-        self.time += 1
+        if key not in self.d: return -1
+        else:
+            self.increaseFreq(key)
+            return self.d[key].val
 
-        if key in self.map:
-            freq, _ = self.freq_time[key]
-            self.freq_time[key] = (freq + 1, self.time)
-            self.update.add(key)
-            return self.map[key]
+    def increaseFreq(self, key):
+        curr = self.d[key]
 
-        return -1
+        # Remove key from self.freqs[freq]
+        del self.freqs[curr.freq][key]
+        if self.min_freq == curr.freq and len(self.freqs[curr.freq]) == 0:
+            self.min_freq += 1
+
+        # Add key to self.freqs[freq+1]
+        curr.freq += 1
+        self.freqs[curr.freq][key] = curr
 
 
     def put(self, key, value):
-        if self.capacity <= 0:
-            return
-
-        self.time += 1
-        if key not in self.map:
-
-            if len(self.map) >= self.capacity:      # must remove least frequent from cache
-
-                while self.priority_queue and self.priority_queue[0][2] in self.update:
-                    # whilst (least frequent, oldest) needs to be updated, update it and add back to heap
-                    _, _, k = heapq.heappop(self.priority_queue)
-                    f, t = self.freq_time[k]
-                    heapq.heappush(self.priority_queue, (f, t, k))
-                    self.update.remove(k)
-
-                # remove (least frequent, oldest)
-                _, _, k = heapq.heappop(self.priority_queue)
-                self.map.pop(k)
-                self.freq_time.pop(k)
-
-            self.freq_time[key] = (0, self.time)
-            heapq.heappush(self.priority_queue, (0, self.time, key))
-
+        if self.capacity == 0: return
+        elif key in self.d:
+            self.increaseFreq(key)
+            self.d[key].val = value
         else:
-            freq, _ = self.freq_time[key]
-            self.freq_time[key] = (freq + 1, self.time)
-            self.update.add(key)
+            # Evict first
+            if self.size == self.capacity:
+                evictKey, evictVal = self.freqs[self.min_freq].popitem(last=False)
+                del self.d[evictKey]
+            else:
+                self.size += 1
 
-        self.map[key] = value
+            # Add the new (key, value) to self.d
+            curr = Node(value)
+            self.d[key] = curr
+            self.freqs[1][key] = curr
+            self.min_freq = 1
